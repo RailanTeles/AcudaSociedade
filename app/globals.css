@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Onest Regular";
+  src: url(../public/fonts/Onest/static/Onest-Regular.ttf);
+}
+
+body{
+  font-family: "Onest Regular";
+}
