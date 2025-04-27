@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import AuthContext from "./Context/AuthContext";
 
 export const metadata: Metadata = {
   title: "Acuda Sociedade",
@@ -17,7 +18,7 @@ export default function RootLayout({
       <body
         className={`antialiased`}
       >
-        {children}
+        <AuthContext>{children}</AuthContext>
       </body>
     </html>
   );
