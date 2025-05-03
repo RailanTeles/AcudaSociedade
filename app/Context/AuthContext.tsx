@@ -41,6 +41,7 @@ export default function AuthProvider( { children } : { children: ReactNode}){
     const login = (id : number) => {
         setIdUser(id);
         setIsLogged(true);
+        // Salvar o token no localStorage "localStorage.setItem('token', 'fake-token');"
     };
 
     const logout = () => {
