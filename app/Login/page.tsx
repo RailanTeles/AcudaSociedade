@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Formulario from "../Components/Formulario";
 
 export default function Login() {
   const [side, setSide] = useState("end");
@@ -28,6 +29,7 @@ export default function Login() {
   return (
     <div className="bg-[#274CB4] w-full h-screen flex items-center justify-center">
       <div className="bg-white flex xl:h-[80%] xl:w-[75%] lg:h-[70%] lg:w-[80%] md:h-[75%] md:w-[90%] sm:w-[80%] w-[95%] h-[95%] rounded-4xl shadow-xl/20 inset-shadow-2xs relative overflow-hidden">
+        {/* Imagem */}
         <div
           className={`absolute md:w-[50%] md:h-[100%] w-[100%] h-[50%] rounded-4xl z-10
                     transform ${transformClass}
@@ -57,6 +59,8 @@ export default function Login() {
             </div>
           </div>
         </div>
+        {/* Formulário */}
+        <Formulario onMudar={mudar}></Formulario>
       </div>
     </div>
   );
