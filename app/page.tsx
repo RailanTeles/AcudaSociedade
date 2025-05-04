@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useAuth } from "./Context/AuthContext";
+import Loading from "./Components/Loading";
 
 export default function Home() {
   const { isLogged } = useAuth();
@@ -9,7 +10,7 @@ export default function Home() {
 
   if(isLogged == null){
     return (
-      <div>Carregando</div>
+      <Loading></Loading>
     )
   }
 

@@ -4,7 +4,7 @@ import { createContext, ReactNode, useContext, useEffect, useState } from "react
 
 interface AuthTypes {
     idUser: number | null,
-    login: (id: number) => void,
+    login: (id: number, token: string) => void,
     logout: () => void,
     isLogged: boolean | null
 };
@@ -28,20 +28,24 @@ export default function AuthProvider( { children } : { children: ReactNode}){
             // const decode = jwtDecode(tokenSaved);
             // Colocar uma condição para o toke ser reconhecido
             // Se o token for reconhecido, coloca o usuário nele
-            // login(decode)
-            setIsLogged(true);
+            // login(decode.id, tokenSaved)
+            setTimeout(() => {
+                setIsLogged(true);
+            }, 10000);
             // Caso não, vai mandar para a página de login por meio do setIsLogged(false);
             // setIsLogged(false);
         } else{
             // Caso não exista nenhum token no localStorage (ou seja, ele não logou anteriormente), vai mandar para a página de login por meio do setIsLogged(false);
-            setIsLogged(false);
+            setTimeout(() => {
+                setIsLogged(false);
+            }, 10000);
         }
     }, []);
 
-    const login = (id : number) => {
+    const login = (id : number, token: string) => {
         setIdUser(id);
         setIsLogged(true);
-        // Salvar o token no localStorage "localStorage.setItem('token', 'fake-token');"
+        localStorage.setItem('token', token);
     };
 
     const logout = () => {
