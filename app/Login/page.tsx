@@ -35,7 +35,7 @@ export default function Login() {
                     transform ${transformClass}
                     transition-transform duration-500 ease-in-out 
                     animate-float`}
-        //   onClick={mudar}
+          onClick={mudar}
         >
           <div className="relative w-full h-full">
             <img
@@ -46,7 +46,7 @@ export default function Login() {
             <div className="absolute top-0 left-0 w-full h-full bg-black/30 bg-opacity-5 rounded-4xl flex items-center justify-center">
               <div className="flex items-center justify-center bg-white/30 w-[90%] h-[80%] rounded-4xl">
                 <div className="flex items-center justify-center bg-white w-[80%] h-[80%] rounded-4xl">
-                  <p className="text-center px-5 md:text-base text-xs">
+                  <p className="text-center px-5 lg:text-base md:text-[12px] text-[10px]">
                     A plataforma visa dar voz à <span className="text-[#274CB4] font-extrabold">população</span>, permitindo que
                     cidadãos <span className="text-[#274CB4] font-extrabold">relatem denúncias e questões que impactam a
                     comunidade</span>. Como uma rede social, possibilita a publicação
