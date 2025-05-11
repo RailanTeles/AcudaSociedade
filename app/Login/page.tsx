@@ -50,7 +50,7 @@ export default function Login() {
                     A plataforma visa dar voz à <span className="text-[#274CB4] font-extrabold">população</span>, permitindo que
                     cidadãos <span className="text-[#274CB4] font-extrabold">relatem denúncias e questões que impactam a
                     comunidade</span>. Como uma rede social, possibilita a publicação
-                    de relatos, imagens e localizações. <span className="text-[#274CB4] font-extrabold">Instituições sociais</span>
+                    de relatos, imagens e localizações. <span className="text-[#274CB4] font-extrabold">Instituições sociais </span>
                     também podem <span className="text-[#274CB4] font-extrabold">divulgar serviços e formas de receber doações</span>,
                     promovendo o engajamento comunitário.
                   </p>
