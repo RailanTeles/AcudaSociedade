@@ -6,7 +6,6 @@ type FormularioProps = {
 export default function Formulario({ onMudar }: FormularioProps) {
   const Entrar = (event: React.FormEvent) => {
     event.preventDefault();
-    alert("Oi");
   };
 
   return (
@@ -32,11 +31,7 @@ export default function Formulario({ onMudar }: FormularioProps) {
             id=""
             placeholder="Digite seu nome de usuário"
             className="w-[80%] md:h-[14%] h-[18%] rounded-4xl px-4 border-black border-2 text-black placeholder-black md:text-[18px]"
-            onInvalid={(e) =>
-              e.currentTarget.setCustomValidity(
-                "Por favor, preencha com seu nome de usuário"
-              )
-            }
+            onInvalid={(e) =>e.currentTarget.setCustomValidity("Por favor, preencha com seu nome de usuário")}
             onInput={(e) => e.currentTarget.setCustomValidity("")}
           />
           <input
