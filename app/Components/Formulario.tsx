@@ -48,10 +48,10 @@ export default function Formulario({ onMudar }: FormularioProps) {
             }
             onInput={(e) => e.currentTarget.setCustomValidity("")}
           />
-          {/* <a href="" className="sm:text-[15px] text-[13px] md:mt-[-10%] mt-[-1%] self-end mr-[12%] text-blue-700 font-bold">Esqueceu a senha?</a> */}
+          <a href="" className="sm:text-[15px] text-[13px] md:mt-[-5%] mt-[-1%] self-end mr-[12%] text-blue-700 font-bold">Esqueceu a senha?</a>
           <button 
           type="submit"
-          className="md:text-2xl text-[20px] text-[#F9C118] font-bold bg-[#274CB4] w-[50%] md:h-[12%] rounded-4xl cursor-pointer"
+          className="md:text-2xl text-[20px] text-[#F9C118] font-bold bg-[#274CB4] w-[50%] md:h-[12%] h-[15%] rounded-4xl cursor-pointer"
           >
             Entrar
           </button>
