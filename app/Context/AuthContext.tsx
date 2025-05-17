@@ -1,13 +1,20 @@
 "use client";
 
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
+import { jwtDecode } from "jwt-decode";
+
 
 interface AuthTypes {
-    idUser: number | null,
-    login: (id: number, token: string) => void,
-    logout: () => void,
-    isLogged: boolean | null
-};
+    idUser: number | null;
+    login: (id: number, token: string) => void;
+    logout: () => void;
+    isLogged: boolean | null;
+}
+
+interface TokenPayload {
+    user_id: number;
+    exp: number; 
+}
 
 const AuthContext = createContext<AuthTypes>({
     idUser: null,
@@ -16,36 +23,35 @@ const AuthContext = createContext<AuthTypes>({
     isLogged: null
 });
 
-export default function AuthProvider( { children } : { children: ReactNode}){
+export default function AuthProvider({ children }: { children: ReactNode }) {
     const [idUser, setIdUser] = useState<number | null>(null);
     const [isLogged, setIsLogged] = useState<boolean | null>(null);
 
-    // Verifica se há token no localStorage
     useEffect(() => {
         const tokenSaved = localStorage.getItem("token");
-        if(tokenSaved){
-            // Aqui, se existir, vai descriptar o token e adicionar.
-            // const decode = jwtDecode(tokenSaved);
-            // Colocar uma condição para o toke ser reconhecido
-            // Se o token for reconhecido, coloca o usuário nele
-            // login(decode.id, tokenSaved)
-            setTimeout(() => {
-                setIsLogged(true);
-            }, 10000);
-            // Caso não, vai mandar para a página de login por meio do setIsLogged(false);
-            // setIsLogged(false);
-        } else{
-            // Caso não exista nenhum token no localStorage (ou seja, ele não logou anteriormente), vai mandar para a página de login por meio do setIsLogged(false);
-            setTimeout(() => {
+        if (tokenSaved) {
+            try {
+                const decoded: TokenPayload = jwtDecode(tokenSaved);
+                // Ex: validar se token expirou (opcional)
+                if (decoded.exp * 1000 < Date.now()) {
+                    throw new Error("Token expirado");
+                }
+                // setIdUser(decoded.user_id);
+                // setIsLogged(true);
+                login(decoded.user_id, tokenSaved);
+            } catch {
+                localStorage.removeItem("token");
                 setIsLogged(false);
-            }, 10000);
+            }
+        } else {
+            setIsLogged(false);
         }
     }, []);
 
-    const login = (id : number, token: string) => {
+    const login = (id: number, token: string) => {
         setIdUser(id);
         setIsLogged(true);
-        localStorage.setItem('token', token);
+        localStorage.setItem("token", token);
     };
 
     const logout = () => {
@@ -55,13 +61,12 @@ export default function AuthProvider( { children } : { children: ReactNode}){
     };
 
     return (
-        <AuthContext.Provider value = {{ idUser, login, logout, isLogged }}>
+        <AuthContext.Provider value={{ idUser, login, logout, isLogged }}>
             {children}
         </AuthContext.Provider>
-    )
-};
+    );
+}
 
-
-export function useAuth(){
+export function useAuth() {
     return useContext(AuthContext);
-};
+}
