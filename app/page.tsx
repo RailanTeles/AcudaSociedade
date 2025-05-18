@@ -2,28 +2,30 @@
 
 import { useRouter } from "next/navigation";
 import { useAuth } from "./Context/AuthContext";
+import { useEffect } from "react";
 import Loading from "./Components/Loading";
 
 export default function Home() {
   const { isLogged } = useAuth();
   const router = useRouter();
 
-  if(isLogged == null){
-    return (
-      <Loading></Loading>
-    )
+  useEffect(() => {
+    if (isLogged === false) {
+      router.push("/Login");
+    }
+  }, [isLogged, router]);
+
+  if (isLogged == null) {
+    return <Loading/>;
   }
 
-  if(isLogged == false){
-    router.push("/Login");
+  if (isLogged === false) {
+    return null;
   }
 
-  if(isLogged == true){
-    return (
-      <div>
-        Essa é a home!
-      </div>
-    );
-  }
-  
+  return (
+    <div>
+      Essa é a home!
+    </div>
+  );
 }
