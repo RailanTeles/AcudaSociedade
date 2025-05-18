@@ -54,7 +54,7 @@ export default function Formulario({ onMudar }: FormularioProps) {
   };
 
   return (
-    <div className="w-full h-full flex">
+    <div className="w-full h-full flex flex-col md:flex-row">
       {/* Login */}
       <div className="md:w-[50%] md:h-full w-full h-[50%] flex flex-col items-center md:py-[2%] py-[1%]">
         <div className="flex items-center justify-evenly h-[20%] w-full">
@@ -91,7 +91,9 @@ export default function Formulario({ onMudar }: FormularioProps) {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             onInvalid={(e) =>
-              e.currentTarget.setCustomValidity("Por favor, preencha com sua senha")
+              e.currentTarget.setCustomValidity(
+                "Por favor, preencha com sua senha"
+              )
             }
             onInput={(e) => e.currentTarget.setCustomValidity("")}
           />
@@ -108,7 +110,7 @@ export default function Formulario({ onMudar }: FormularioProps) {
           )}
 
           <a
-            href="#"
+            href="/Recover"
             className="sm:text-[15px] text-[13px] md:mt-[-5%] mt-[-1%] self-end mr-[12%] text-blue-700 font-bold"
           >
             Esqueceu a senha?
@@ -129,6 +131,40 @@ export default function Formulario({ onMudar }: FormularioProps) {
         </form>
       </div>
       {/* Cadastro */}
+      <div className="md:w-[50%] md:h-full w-full h-[50%] flex flex-col items-center md:py-[2%] py-[1%] justify-evenly">
+        <div className="flex items-center justify-evenly h-[20%] w-full">
+          <img src="Images/AS-logo.png" alt="" className="h-full" />
+          <h1 className="md:text-4xl text-2xl text-center">
+            <span className="text-[#274CB4] font-bold">Acuda </span>
+            <br />
+            <span className="text-[#F9C118] font-bold">Sociedade</span>
+          </h1>
+        </div>
+        <p className="lg:text-base md:text-[15px] text-[14px] text-[#274CB4] font-extrabold">
+          {" "}
+          Exerça sua cidadania e faça a diferença
+        </p>
+        <div className="w-[70%] flex justify-center items-center">
+          <p className="lg:text-base md:text-[15px] text-[14px] text-center">
+            Cadastre-se agora e faça parte de uma comunidade que transforma
+            vidas. Junte-se a nós e comece a fazer a diferença hoje!
+          </p>
+        </div>
+        <a href="/Register" className="w-[50%] md:h-[10%] h-[13%] cursor-pointer flex">
+          <button
+            type="submit"
+            className="md:text-2xl text-[20px] text-[#F9C118] font-bold bg-[#274CB4] w-full h-full rounded-4xl cursor-pointer"
+          >
+            Cadastrar-se
+          </button>
+        </a>
+        <p
+          className="sm:text-[15px] text-[13px] text-blue-700 font-bold text-center cursor-pointer"
+          onClick={onMudar}
+        >
+          Já tem uma conta? Clique aqui
+        </p>
+      </div>
     </div>
   );
 }

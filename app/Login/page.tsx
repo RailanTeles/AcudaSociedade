@@ -35,7 +35,6 @@ export default function Login() {
                     transform ${transformClass}
                     transition-transform duration-500 ease-in-out 
                     animate-float`}
-        //   onClick={mudar}
         >
           <div className="relative w-full h-full">
             <img
