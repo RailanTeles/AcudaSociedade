@@ -153,7 +153,7 @@ export default function Register() {
           </div>
           <button
             type="submit"
-            className="md:text-2xl text-[20px] text-[#F9C118] font-bold bg-[#274CB4] md:w-[30%] w-[50%] md:h-[10%] h-[8%] rounded-4xl cursor-pointer"
+            className="md:text-2xl text-[20px] text-[#F9C118] font-bold bg-[#274CB4] md:w-[30%] w-[50%] md:h-[10%] h-[8%] rounded-4xl cursor-pointer transform transition duration-300 hover:scale-110 hover:bg-[#1E3A8A] hover:text-white"
           >
             Cadastrar-se
           </button>

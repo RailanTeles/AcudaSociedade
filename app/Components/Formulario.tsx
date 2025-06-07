@@ -117,7 +117,7 @@ export default function Formulario({ onMudar }: FormularioProps) {
           </a>
           <button
             type="submit"
-            className="md:text-2xl text-[20px] text-[#F9C118] font-bold bg-[#274CB4] w-[50%] md:h-[12%] h-[15%] rounded-4xl cursor-pointer"
+            className="md:text-2xl text-[20px] text-[#F9C118] font-bold bg-[#274CB4] w-[50%] md:h-[12%] h-[15%] rounded-4xl cursor-pointer transform transition duration-300 hover:scale-110 hover:bg-[#1E3A8A] hover:text-white"
           >
             Entrar
           </button>
@@ -153,7 +153,7 @@ export default function Formulario({ onMudar }: FormularioProps) {
         <a href="/Register" className="w-[50%] md:h-[10%] h-[13%] cursor-pointer flex">
           <button
             type="submit"
-            className="md:text-2xl text-[20px] text-[#F9C118] font-bold bg-[#274CB4] w-full h-full rounded-4xl cursor-pointer"
+            className="md:text-2xl text-[20px] text-[#F9C118] font-bold bg-[#274CB4] w-full h-full rounded-4xl cursor-pointer transform transition duration-300 hover:scale-110 hover:bg-[#1E3A8A] hover:text-white"
           >
             Cadastrar-se
           </button>
