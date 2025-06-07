@@ -35,7 +35,6 @@ export default function Register() {
 
     if(VerifyPassword()){
         // Adicionar aqui o backend para o envio dos dados
-        console.log(userExi + " " + username + " " + email + " " + isOng + " " + password);
 
         setMessage("Cadastro Completo! Pode voltar ao Login para Entrar!");
         setColor("text-green-700");
