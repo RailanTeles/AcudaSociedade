@@ -7,9 +7,13 @@ type AddProps = {
 };
 
 export default function AddPost({ abrirModal }: AddProps) {
+  const [desc, setDesc] = useState("");
   const [image, setImage] = useState<File | null>(null);
   const [imageUrl, setImageUrl] = useState<string>("");
   const [type, setType] = useState("");
+  const [status, setStatus] = useState("");
+  const [message, setMessage] = useState("");
+
   const [haveStatus, setHaveStatus] = useState(false);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,6 +30,14 @@ export default function AddPost({ abrirModal }: AddProps) {
     setImageUrl("");
   }
 
+  const EnviarDadosPost = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (desc.trim() == "") {
+      setMessage("A descrição não pode ser vazia...")
+    }
+  }
+
   return (
     <div className="bg-white flex flex-col items-center justify-evenly xl:h-[92%] xl:w-[75%] lg:h-[90%] lg:w-[80%] md:h-[85%] md:w-[90%] sm:w-[80%] w-[95%] h-[95%] rounded-4xl shadow-xl/20 inset-shadow-2xs relative overflow-hidden">
       <h1
@@ -36,12 +48,14 @@ export default function AddPost({ abrirModal }: AddProps) {
       </h1>
       <form
         className="w-full h-full flex flex-col items-center justify-evenly"
-        //   onSubmit={}
+        onSubmit={EnviarDadosPost}
       >
         <textarea
           placeholder="Dê uma descrição para a sua postagem!"
           className="md:w-[50%] w-[80%] h-[10%] resize-none rounded-[4px] px-0.5 border-black border-2 placeholder-black"
           required
+          value={desc}
+          onChange={(e) => setDesc(e.target.value)}
         ></textarea>
 
         {!image ? (
@@ -85,7 +99,7 @@ export default function AddPost({ abrirModal }: AddProps) {
               setType(e.target.value);
               setHaveStatus(
                 e.target.value === "ProjetoSocial" ||
-                  e.target.value === "Denuncia"
+                e.target.value === "Denuncia"
               );
             }}
             className="md:w-[60%] w-[80%] h-full rounded-4xl px-4 border-black border-2 text-black placeholder-black md:text-[18px]"
@@ -106,7 +120,8 @@ export default function AddPost({ abrirModal }: AddProps) {
             <select
               name="status"
               id="status"
-              //   value={status}
+              value={status}
+              onChange={(e) => setStatus(e.target.value)}
               className="md:w-[60%] w-[75%] h-full rounded-4xl px-4 border-black border-2 text-black placeholder-black md:text-[18px]"
               required
             >
@@ -124,6 +139,11 @@ export default function AddPost({ abrirModal }: AddProps) {
         >
           Postar
         </button>
+        {message &&
+          (
+            <p>{message}</p>
+          )
+        }
       </form>
     </div>
   );
