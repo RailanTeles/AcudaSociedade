@@ -51,7 +51,7 @@ export default function Home() {
             className="absolute w-full h-full bg-[rgba(0,0,0,0.7)] bg-opacity-30 cursor-pointer"
             onClick={AbrirModalPost}
           ></div>
-          <AddPost></AddPost>
+          <AddPost abrirModal={AbrirModalPost}></AddPost>
         </div>
       )}
     </div>

@@ -6,7 +6,7 @@ type NavProps = {
 
 export default function NavBar( {abrirModal} : NavProps) {
   return (
-    <div className=" relative flex md:flex-col bg-[#274CB4] items-center md:justify-start justify-evenly lg:w-[20%] md:w-[30%] md:h-full rounded-br-[25px] md:rounded-tr-[25px] md:rounded-bl-[0px] rounded-bl-[25px] md:py-[2%] md:pb-[0%] py-[6%] pb-[10%] md:gap-[10%] box-border">
+    <div className=" relative flex md:flex-col bg-[#274CB4] items-center md:justify-start justify-evenly lg:w-[25%] md:w-[30%] md:h-full rounded-br-[25px] md:rounded-tr-[25px] md:rounded-bl-[0px] rounded-bl-[25px] md:py-[2%] md:pb-[0%] py-[6%] pb-[10%] md:gap-[10%] box-border">
       <div className="w-full md:flex hidden justify-evenly items-center">
         <img
           src="Images/AS-logo.png"
