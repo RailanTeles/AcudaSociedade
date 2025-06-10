@@ -29,7 +29,7 @@ export default function NavBar( {abrirModal} : NavProps) {
         </h1>
       </a>
       <a
-        href="/"
+        href="/Search"
         className="flex items-center gap-[10%] md:w-[70%] transform transition duration-300 hover:scale-110"
       >
         <img src="Images/search.png" alt="" className="md:w-[25%] w-[100%]" />
@@ -38,7 +38,7 @@ export default function NavBar( {abrirModal} : NavProps) {
         </h1>
       </a>
       <a
-        href="/"
+        href="/Profile"
         className="flex items-center gap-[10%] md:w-[70%] transform transition duration-300 hover:scale-110"
       >
         <img src="Images/perfil.png" alt="" className="md:w-[25%] w-[100%]" />
