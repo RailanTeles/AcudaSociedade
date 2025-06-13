@@ -39,15 +39,9 @@ export default function Home() {
     <div className="w-full h-screen flex md:flex-row flex-col">
       {/* NavBar */}
       <NavBar abrirModal={AbrirModalPost}></NavBar>
-      <div
-        className="md:hidden flex items-center justify-center mt-[-8%] self-center bg-[#274CB4] border-4 border-[#F9C118] w-[80px] h-[80px] z-10 rounded-full"
-        onClick={AbrirModalPost}
-      >
-        <h1 className="text-white text-[50px] font-extrabold">+</h1>
-      </div>
 
       {/* Página */}
-      <div className="w-full">Essa é a home!</div>
+      <div className="lg:w-[80%] md:w-[75%] w-full flex items-center flex-col lg:ml-[22%] md:ml-[27%] md:mt-[0%] mt-[48%]">Essa é a home!</div>
 
       {/* Modal */}
       {modal && (

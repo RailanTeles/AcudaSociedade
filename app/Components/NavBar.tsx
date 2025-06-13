@@ -6,7 +6,7 @@ type NavProps = {
 
 export default function NavBar( {abrirModal} : NavProps) {
   return (
-    <div className=" relative flex md:flex-col bg-[#274CB4] items-center md:justify-start justify-evenly lg:w-[25%] md:w-[30%] md:h-full rounded-br-[25px] md:rounded-tr-[25px] md:rounded-bl-[0px] rounded-bl-[25px] md:py-[2%] md:pb-[0%] py-[6%] pb-[10%] md:gap-[10%] box-border">
+    <div className="fixed flex md:flex-col bg-[#274CB4] items-center md:justify-start justify-evenly lg:w-[22%] md:w-[27%] w-full md:h-full h-auto rounded-br-[25px] md:rounded-tr-[25px] md:rounded-bl-[0px] rounded-bl-[25px] md:py-[2%] md:pb-[0%] py-[6%] pb-[10%] md:gap-[10%] box-border z-10">
       <div className="w-full md:flex hidden justify-evenly items-center">
         <img
           src="Images/AS-logo.png"
@@ -51,6 +51,13 @@ export default function NavBar( {abrirModal} : NavProps) {
         onClick={abrirModal}
       >
         <h1 className="text-[#274CB4] font-bold text-[24px]">Postar</h1>
+      </div>
+
+      <div
+        className="md:hidden absolute flex items-center justify-center mt-[40%] self-center bg-[#274CB4] border-4 border-[#F9C118] w-[80px] h-[80px] z-10 rounded-full"
+        onClick={abrirModal}
+      >
+        <h1 className="text-white text-[50px] font-extrabold">+</h1>
       </div>
 
     </div>

@@ -6,6 +6,7 @@ import Loading from "../Components/Loading";
 import NavBar from "../Components/NavBar";
 import AddPost from "../Components/AddPost";
 import { useAuth } from "../Context/AuthContext";
+import MyInformations from "../Components/MyInformations";
 
 export default function Profile() {
   const { isLogged } = useAuth();
@@ -39,16 +40,10 @@ export default function Profile() {
     <div className="w-full h-screen flex md:flex-row flex-col">
       {/* NavBar */}
       <NavBar abrirModal={AbrirModalPost}></NavBar>
-      <div
-        className="md:hidden flex items-center justify-center mt-[-8%] self-center bg-[#274CB4] border-4 border-[#F9C118] w-[80px] h-[80px] z-10 rounded-full"
-        onClick={AbrirModalPost}
-      >
-        <h1 className="text-white text-[50px] font-extrabold">+</h1>
-      </div>
 
       {/* Página Do Perfil */}
-      <div className="w-full flex items-center flex-col">
-        <div className="w-[90%] md:h-[25%] h-[15%] my-[1%] flex items-center relative">
+      <div className="lg:w-[80%] md:w-[75%] w-full flex items-center flex-col lg:ml-[22%] md:ml-[27%] md:mt-[0%] mt-[48%]">
+        <div className="w-[90%] md:h-[20%] h-[10%] my-[1%] flex items-center relative">
           <img
             src="Images/person-placeholder.png"
             alt=""
@@ -67,7 +62,7 @@ export default function Profile() {
             Editar
           </button>
         </div>
-        <div className="w-[90%] md:min-h-[15%] min-h-[30%] my-[2%] flex relative">
+        <div className="w-[90%] my-[2%] flex relative">
           <p className="md:text-[14px] text-[12px] text-justify">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
             facilisi. Sed vitae ligula id justo sodales varius. Fusce fermentum,
@@ -84,17 +79,22 @@ export default function Profile() {
             faucibus.
           </p>
         </div>
-        <h1 className="font-bold md:text-[40px] text-2xl my-[3%]">
+
+        {/* Minhas Informações */}
+        <h1 className="font-bold md:text-[40px] text-2xl mt-[3%] mb-[1%]">
           Minhas Informações
         </h1>
-        <hr className="w-full border-[#274CB4] border-1" />
-        <h1 className="font-bold md:text-[40px] text-2xl my-[3%]">
+        <hr className="w-full border-[#274CB4] border-1 mb-[2%]"/>
+        <MyInformations></MyInformations>
+
+        {/* Minhas Postagens */}
+        <h1 className="font-bold md:text-[40px] text-2xl mt-[3%] mb-[1%]">
           Minhas Postagens
         </h1>
-        <hr className="w-full border-[#274CB4] border-1" />
+        <hr className="w-full border-[#274CB4] border-1 mb-[2%]"/>
       </div>
 
-      {/* Modal */}
+      {/* Modal Post*/}
       {modal && (
         <div className="absolute z-80 w-full h-full flex items-center justify-center">
           <div
