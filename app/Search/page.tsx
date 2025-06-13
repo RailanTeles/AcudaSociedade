@@ -45,9 +45,9 @@ export default function Search() {
       
       {/* Modal */}
       {modal && (
-        <div className="absolute z-80 w-full h-full flex items-center justify-center">
+        <div className="fixed z-80 w-full h-full flex items-center justify-center">
           <div
-            className="absolute w-full h-full bg-[rgba(0,0,0,0.7)] bg-opacity-30 cursor-pointer"
+            className="fixed w-full h-full bg-[rgba(0,0,0,0.7)] bg-opacity-30 cursor-pointer"
             onClick={AbrirModalPost}
           ></div>
           <AddPost abrirModal={AbrirModalPost}></AddPost>

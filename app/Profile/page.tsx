@@ -76,7 +76,7 @@ export default function Profile() {
           <img
             src={image}
             alt=""
-            className="rounded-full border-2 h-[85%] md:mr-[6%] mr-[4%]"
+            className="rounded-full border-2 h-[85%] md:mr-[6%] mr-[4%] object-cover"
           />
           <div className="flex flex-col gap-0.5">
             <p className="font-bold md:text-[40px]">{userExi}</p>
@@ -118,7 +118,7 @@ export default function Profile() {
 
       {/* Modal Post*/}
       {modal && (
-        <div className="absolute z-80 w-full h-full flex items-center justify-center">
+        <div className="z-80 w-full h-full flex items-center justify-center fixed">
           <div
             className="absolute w-full h-full bg-[rgba(0,0,0,0.7)] bg-opacity-30 cursor-pointer"
             onClick={AbrirModalPost}
@@ -131,7 +131,7 @@ export default function Profile() {
       {modalEdit && (
         <div className="absolute z-80 w-full h-full flex items-center justify-center">
           <div
-            className="absolute w-full h-full bg-[rgba(0,0,0,0.7)] bg-opacity-30 cursor-pointer"
+            className="fixed w-full h-full bg-[rgba(0,0,0,0.7)] bg-opacity-30 cursor-pointer"
             onClick={AbrirModalEdit}
           ></div>
           <EditProfile

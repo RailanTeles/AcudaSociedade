@@ -25,30 +25,30 @@ export default function MyInformations({
           {email != null ? (
             <a
               href={`mailto:${email}`}
-              className="flex items-center gap-[10px]"
+              className="flex items-center gap-[10px] w-full md:justify-center"
               target="_blank"
             >
-              <img src="Images/email.png" alt="" />
+              <img src="Images/email.png" alt="" className="md:w-[10%] w-[15%]"/>
               <p className="font-bold md:text-[14px] text-[10px]">{email}</p>
             </a>
           ) : null}
-          {email != "" ? (
+          {insta != "" ? (
             <a
               href={insta}
-              className="flex items-center gap-[10px]"
+              className="flex items-center gap-[10px] w-full md:justify-center"
               target="_blank"
             >
-              <img src="Images/instagram.png" alt="" />
+              <img src="Images/instagram.png" alt="" className="md:w-[10%] w-[15%]"/>
               <p className="font-bold md:text-[14px] text-[12px]">{insta}</p>
             </a>
           ) : null}
           {tel != null ? (
             <a
               href={`https://wa.me/${tel}`}
-              className="flex items-center gap-[10px]"
+              className="flex items-center gap-[10px] w-full md:justify-center"
               target="_blank"
             >
-              <img src="Images/whatsapp.png" alt="" />
+              <img src="Images/whatsapp.png" alt="" className="md:w-[10%] w-[15%]"/>
               <p className="font-bold md:text-[14px] text-[12px]">{tel}</p>
             </a>
           ) : null}
@@ -60,8 +60,8 @@ export default function MyInformations({
           <h1 className="font-bold md:text-[25px] text-[20px] mb-[1%]">
             Doação
           </h1>
-          <div className="flex items-center gap-[10px]">
-            <img src="Images/pix.png" alt="" />
+          <div className="flex items-center gap-[10px] w-full md:justify-center">
+            <img src="Images/pix.png" alt="" className="md:w-[10%] w-[15%]"/>
             <p className="font-bold md:text-[14px] text-[12px]">{doacao}</p>
           </div>
         </div>
@@ -72,8 +72,8 @@ export default function MyInformations({
           <h1 className="font-bold md:text-[25px] text-[20px] mb-[1%]">
             Localização
           </h1>
-          <div className="flex items-center gap-[10px]">
-            <img src="Images/marcador.png" alt="" />
+          <div className="flex items-center gap-[10px] w-full md:justify-center">
+            <img src="Images/marcador.png" alt="" className="md:w-[10%] w-[15%]"/>
             <p className="font-bold md:text-[14px] text-[12px]">{loc}</p>
           </div>
         </div>
