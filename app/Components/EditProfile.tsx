@@ -57,23 +57,30 @@ export default function EditProfile({
       >
         X
       </h1>
-      <div className="flex md:flex-row flex-col md:w-[80%] w-[90%]">
-        <input
-          type="file"
-          id="file-upload"
-          onChange={handleFileChange}
-          className="opacity-0 absolute hidden"
-          accept="image/jpeg, image/png, image/jpg"
-        />
-        <label
-          htmlFor="file-upload"
-          className="md:w-[20%] w-[30%] relative flex items-center justify-center aspect-square text-center self-center cursor-pointer border-2 border-black rounded-full"
-        >
-          <img src={imageUrl} alt="" className="w-full h-full rounded-full aspect-square object-cover" />
-          <div className="md:w-[15%] w-[20%] flex items-center justify-center aspect-square bg-[#F9C118] z-10 absolute top-0 right-0 rounded-full">
-            <img src="Images/edit.png" alt="" className="w-[70%]" />
-          </div>
-        </label>
+      {/* Informações do Perfil - 1 */}
+      <div className="w-full h=[90%] flex flex-col items-center justify-evenly">
+        <div className="flex md:flex-row flex-col md:w-[80%] w-[90%]">
+          <input
+            type="file"
+            id="file-upload"
+            onChange={handleFileChange}
+            className="opacity-0 absolute hidden"
+            accept="image/jpeg, image/png, image/jpg"
+          />
+          <label
+            htmlFor="file-upload"
+            className="md:w-[20%] w-[30%] relative flex items-center justify-center aspect-square text-center self-center cursor-pointer border-2 border-black rounded-full"
+          >
+            <img
+              src={imageUrl}
+              alt=""
+              className="w-full h-full rounded-full aspect-square object-cover"
+            />
+            <div className="md:w-[15%] w-[20%] flex items-center justify-center aspect-square bg-[#F9C118] z-10 absolute top-0 right-0 rounded-full">
+              <img src="Images/edit.png" alt="" className="w-[70%]" />
+            </div>
+          </label>
+        </div>
       </div>
     </div>
   );
