@@ -14,21 +14,16 @@ export default function Profile() {
   const { isLogged } = useAuth();
   const router = useRouter();
 
-  // Dados
-  const [image, setImage] = useState<string>("Images/person-placeholder.png"); // Esse vai ser o padrão caswo o usuário não tenha foto
-  const [userExi, setUserExi] = useState("nomePerfil");
-  const [username, setUsername] = useState("nome_arroba");
-  const [email, setEmail] = useState("");
-  const [desc, setDesc] = useState<string | null>(
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed vitae ligula id justo sodales varius. Fusce fermentum, lacus at fermentum luctus, nisl purus fringilla enim, vel scelerisque lorem urna ut libero. Suspendisse potenti. Aenean at metus at augue laoreet scelerisque. Integer et justo at lorem efficitur tincidunt. Curabitur nec magna ut libero tincidunt faucibus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed vitae ligula id justo sodales varius. Fusce fermentum, lacus at fermentum luctus, nisl purus fringilla enim, vel scelerisque lorem urna ut libero. Suspendisse potenti. Aenean at metus at augue laoreet scelerisque. Integer et justo at lorem efficitur tincidunt. Curabitur nec magna ut libero tincidunt faucibus."
-  );
-  const [emailExibi, setEmailExibi] = useState<string | null>(null);
-  const [insta, setInsta] = useState<string>(
-    "https://www.instagram.com/railanteles12"
-  );
-  const [tel, setTel] = useState<string | null>(null);
-  const [doacao, setDoacao] = useState<string | null>("ong@gmail.com");
-  const [loc, setLoc] = useState<string | null>("Fraga Maia");
+  // Dados - Vem do BackEnd - Pode user o Data
+  var image: string | null = null;
+  var userExi: string = "nome_perfil"
+  var username: string = "nome_arroba"
+  var desc: string | null = null;
+  var emailExibi: string | null = null;
+  var insta: string | null = "https://www.instagram.com/railanteles12";
+  var tel: string | null = null;
+  var doacao: string | null = "ong@gmail.com";
+  var loc: string | null = "Fraga Maia";
 
   // Modais
   const [modal, setModal] = useState(false);
@@ -74,7 +69,7 @@ export default function Profile() {
       <div className="lg:w-[80%] md:w-[75%] w-full flex items-center flex-col lg:ml-[22%] md:ml-[27%] md:mt-[0%] mt-[48%]">
         <div className="w-[90%] md:h-[20%] h-[10%] my-[1%] flex items-center relative">
           <img
-            src={image}
+            src={image || "Images/person-placeholder.png"}
             alt=""
             className="rounded-full border-2 h-[85%] md:mr-[6%] mr-[4%] object-cover"
           />
@@ -136,21 +131,6 @@ export default function Profile() {
           ></div>
           <EditProfile
             abrirModal={AbrirModalEdit}
-            image={image}
-            userExi={userExi}
-            username={username}
-            insta={insta}
-            tel={tel}
-            doacao={doacao}
-            loc={loc}
-            emailExi={emailExibi}
-            setImage={setImage}
-            setUserExibi={setUserExi}
-            setInsta={setInsta}
-            setTel={setTel}
-            setDoacao={setDoacao}
-            setLoc={setLoc}
-            setEmailExi={setEmailExibi}
           ></EditProfile>
         </div>
       )}
