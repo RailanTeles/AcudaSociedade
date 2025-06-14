@@ -22,8 +22,8 @@ export default function Profile() {
   var emailExibi: string | null = null;
   var insta: string | null = "https://www.instagram.com/railanteles12";
   var tel: string | null = null;
-  var doacao: string | null = "ong@gmail.com";
-  var loc: string | null = "Fraga Maia";
+  var doacao: string | null = "meupix";
+  var loc: string | null = null;
 
   // Modais
   const [modal, setModal] = useState(false);
@@ -67,7 +67,7 @@ export default function Profile() {
 
       {/* Página Do Perfil */}
       <div className="lg:w-[80%] md:w-[75%] w-full flex items-center flex-col lg:ml-[22%] md:ml-[27%] md:mt-[0%] mt-[48%]">
-        <div className="w-[90%] md:h-[20%] h-[10%] my-[1%] flex items-center relative">
+        <div className="w-[90%] md:h-[20%] h-[10%] min-h-[70px] my-[1%] flex items-center relative">
           <img
             src={image || "Images/person-placeholder.png"}
             alt=""

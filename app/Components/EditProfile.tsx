@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 type EditProps = {
   abrirModal: () => void;
@@ -22,12 +23,18 @@ export default function EditProfile({ abrirModal }: EditProps) {
   const [loc, setLoc] = useState<string | null>("Fraga Maia");
   const [password, setPassword] = useState<string>("");
 
+  const [page, setpage] = useState<number>(1);
+
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files ? e.target.files[0] : null;
     if (file) {
       const url = URL.createObjectURL(file);
       setImage(url);
     }
+  };
+
+  const EnviarDados = (event: React.FormEvent) => {
+    alert("Enviou");
   };
 
   return (
@@ -38,67 +45,108 @@ export default function EditProfile({ abrirModal }: EditProps) {
       >
         X
       </h1>
-      {/* Informações do Perfil - 1 */}
-      <form className="w-full h-[90%] flex flex-col items-center justify-evenly">
-        {/* Informações Gerais */}
-        <div className="flex md:flex-row flex-col md:w-[80%] w-[90%] md:h-[25%] h-[30%] justify-between items-center">
-          <input
-            required
-            type="file"
-            id="file-upload"
-            onChange={handleFileChange}
-            className="opacity-0 absolute hidden"
-            accept="image/jpeg, image/png, image/jpg"
-          />
-          <label
-            htmlFor="file-upload"
-            className="md:h-[90%] h-[50%] relative flex items-center justify-center aspect-square text-center self-center cursor-pointer border-2 border-black rounded-full"
-          >
-            <img
-              src={image || "Images/person-placeholder.png"}
-              alt=""
-              className="w-full h-full rounded-full aspect-square object-cover"
-            />
-            <div className="md:w-[15%] w-[20%] flex items-center justify-center aspect-square bg-[#F9C118] z-10 absolute top-0 right-0 rounded-full">
-              <img src="Images/edit.png" alt="" className="w-[70%]" />
+      {/* Informações do Perfil */}
+      <form
+        className="w-full h-full flex flex-col items-center justify-center"
+        onSubmit={EnviarDados}
+      >
+        {page == 1 ? (
+          // Informações Gerais
+          <div className="flex flex-col w-full h-[80%] items-center justify-evenly">
+            <div className="flex md:flex-row flex-col md:w-[80%] w-[90%] md:h-[25%] h-[30%] justify-between items-center">
+              <input
+                type="file"
+                id="file-upload"
+                onChange={handleFileChange}
+                className="opacity-0 absolute hidden"
+                accept="image/jpeg, image/png, image/jpg"
+              />
+              <label
+                htmlFor="file-upload"
+                className="md:h-[90%] h-[50%] relative flex items-center justify-center aspect-square text-center self-center cursor-pointer border-2 border-black rounded-full"
+              >
+                <img
+                  src={image || "Images/person-placeholder.png"}
+                  alt=""
+                  className="w-full h-full rounded-full aspect-square object-cover"
+                />
+                <div className="md:w-[15%] w-[20%] flex items-center justify-center aspect-square bg-[#F9C118] z-10 absolute top-0 right-0 rounded-full">
+                  <img src="Images/edit.png" alt="" className="w-[70%]" />
+                </div>
+              </label>
+              <div className="flex md:w-[75%] w-[90%] flex-col md:h-full h-[50%] justify-evenly">
+                <input
+                  required
+                  type="text"
+                  placeholder="Digite seu nome de usuário"
+                  className="w-[100%] rounded-4xl md:py-2 py-1 px-4 border-black border-2 text-black placeholder-black md:text-[18px]"
+                  value={userExi.trim()}
+                  onChange={(e) => setUserExi(e.target.value)}
+                  onInvalid={(e) =>
+                    e.currentTarget.setCustomValidity(
+                      "Por favor, preencha com seu nome de usuário"
+                    )
+                  }
+                  onInput={(e) => e.currentTarget.setCustomValidity("")}
+                />
+                <input
+                  type="text"
+                  placeholder="Digite seu nome de usuário"
+                  className="w-[100%] rounded-4xl md:py-2 py-1 px-4 border-black border-2 text-black placeholder-black md:text-[18px] bg-gray-200"
+                  readOnly
+                  value={`@${username}`}
+                  title="Esse atributo não pode ser alterado"
+                  onClick={() => alert("Esse atributo não pode ser alterado")}
+                />
+              </div>
             </div>
-          </label>
-          <div className="flex md:w-[75%] w-[90%] flex-col md:h-full h-[50%] justify-evenly">
-            <input
-              type="text"
-              placeholder="Digite seu nome de usuário"
-              className="w-[100%] rounded-4xl md:py-2 py-1 px-4 border-black border-2 text-black placeholder-black md:text-[18px]"
-              value={userExi.trim()}
-              onChange={(e) => setUserExi(e.target.value)}
-              onInvalid={(e) =>
-                e.currentTarget.setCustomValidity(
-                  "Por favor, preencha com seu nome de usuário"
-                )
-              }
-              onInput={(e) => e.currentTarget.setCustomValidity("")}
-            />
-            <input
-              type="text"
-              placeholder="Digite seu nome de usuário"
-              className="w-[100%] rounded-4xl md:py-2 py-1 px-4 border-black border-2 text-black placeholder-black md:text-[18px] bg-gray-200"
-              readOnly
-              value={`@${username}`}
-              title="Esse atributo não pode ser alterado"
-              onClick={() => alert("Esse atributo não pode ser alterado")}
-            />
+            <textarea
+              placeholder="Dê uma descrição para o seu perfil! Caso não queira, deixe vazio!"
+              className="md:w-[80%] w-[90%] h-[20%] resize-none rounded-[4px] px-0.5 border-black border-2 placeholder-black"
+              value={desc || ""}
+              onChange={(e) => setDesc(e.target.value)}
+            ></textarea>
           </div>
-        </div>
-        <textarea
-          placeholder="Dê uma descrição para o seu perfil! Caso não queira, deixe vazio!"
-          className="md:w-[80%] w-[90%] h-[20%] resize-none rounded-[4px] px-0.5 border-black border-2 placeholder-black"
-          value={desc || ""}
-          onChange={(e) => setDesc(e.target.value)}
-        ></textarea>
+        ) : (
+          // Minhas Informações
+          <div className="flex w-full h-[80%] items-center justify-evenly">
+            <div className="flex flex-col justify-evenly items-center md:w-[30%] w-[50%] gap-[10px] border-2">
+              <h1 className="font-bold md:text-[25px] text-[20px] mb-[1%]">
+                Redes Sociais
+              </h1>
+              <input
+                type="text"
+                placeholder="Digite seu email para visualização"
+                className="w-[80%] rounded-4xl md:py-2 py-1 px-4 border-black border-2 text-black placeholder-black md:text-[18px]"
+                value={userExi.trim()}
+                onChange={(e) => setUserExi(e.target.value)}
+              />
+            </div>
+          </div>
+        )}
+        {/* Setup */}
+        {/* Obs: As setas irão aparecer somente se o usuário for ONG */}
+        {page == 2 && (
+          <div
+            className="absolute bottom-0 left-0 md:w-[5%] w-[10%] aspect-square bg-[#274CB4] rounded-full md:ml-[1%] md:mb-[3%] mb-[15%] cursor-pointer"
+            onClick={(e) => setpage(1)}
+          >
+            <ArrowLeft className="text-[#F9C118] w-full h-full" />
+          </div>
+        )}
+        {page == 1 && (
+          <div
+            className="absolute bottom-0 right-0 md:w-[5%] w-[10%] aspect-square bg-[#274CB4] rounded-full md:mr-[1%] md:mb-[3%] mb-[15%] cursor-pointer"
+            onClick={(e) => setpage(2)}
+          >
+            <ArrowRight className="text-[#F9C118] w-full h-full" />
+          </div>
+        )}
         <input
           required
           type="password"
           placeholder="Digite sua senha"
-          className="w-[30%] h-[7%] rounded-4xl px-4 border-black border-2 text-black placeholder-black md:text-[18px]"
+          className="md:w-[30%] w-[70%] h-[6%] rounded-4xl px-4 border-black border-2 text-black placeholder-black md:text-[18px]"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           onInvalid={(e) =>
@@ -108,13 +156,13 @@ export default function EditProfile({ abrirModal }: EditProps) {
           }
           onInput={(e) => e.currentTarget.setCustomValidity("")}
         />
+        <button
+          type="submit"
+          className="md:text-2xl text-[20px] mt-[2%] text-[#F9C118] font-bold bg-[#274CB4] md:w-[30%] w-[70%] h-[6%] rounded-4xl cursor-pointer transform transition duration-300 hover:scale-110 hover:bg-[#1E3A8A] hover:text-white"
+        >
+          Salvar
+        </button>
       </form>
-      {/* Mais Informações - Só aparece para Ongs - Comparar com o auth.type*/}
-      {/* <div className="flex md:flex-row flex-col md:w-[80%] w-[90%] md:h-[25%] h-[30%] justify-between items-center">
-            <div className="flex ">
-
-            </div>
-        </div> */}
     </div>
   );
 }
