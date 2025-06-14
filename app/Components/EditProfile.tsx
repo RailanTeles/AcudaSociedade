@@ -109,17 +109,55 @@ export default function EditProfile({ abrirModal }: EditProps) {
           </div>
         ) : (
           // Minhas Informações
-          <div className="flex w-full h-[80%] items-center justify-evenly">
-            <div className="flex flex-col justify-evenly items-center md:w-[30%] w-[50%] gap-[10px] border-2">
+          <div className="flex w-full h-[80%] items-center justify-evenly flex-wrap">
+            <div className="flex flex-col justify-evenly items-center md:w-[35%] w-[80%] gap-[10px] min-w-[250px]">
               <h1 className="font-bold md:text-[25px] text-[20px] mb-[1%]">
                 Redes Sociais
               </h1>
               <input
                 type="text"
-                placeholder="Digite seu email para visualização"
-                className="w-[80%] rounded-4xl md:py-2 py-1 px-4 border-black border-2 text-black placeholder-black md:text-[18px]"
-                value={userExi.trim()}
-                onChange={(e) => setUserExi(e.target.value)}
+                placeholder="Email para visualização"
+                className="w-[90%] rounded-4xl py-1 px-4 border-black border-2 text-black placeholder-black md:text-[18px]"
+                value={emailExibi || ""}
+                onChange={(e) => setEmailExibi(e.target.value)}
+              />
+              <input
+                type="text"
+                placeholder="Instagram"
+                className="w-[90%] rounded-4xl py-1 px-4 border-black border-2 text-black placeholder-black md:text-[18px]"
+                value={insta || ""}
+                onChange={(e) => setInsta(e.target.value)}
+              />
+              <input
+                type="text"
+                placeholder="Telefone para contato"
+                className="w-[90%] rounded-4xl py-1 px-4 border-black border-2 text-black placeholder-black md:text-[18px]"
+                value={tel || ""}
+                onChange={(e) => setTel(e.target.value)}
+              />
+            </div>
+            <div className="flex flex-col justify-evenly items-center md:w-[35%] w-[80%] gap-[10px] min-w-[250px]">
+              <h1 className="font-bold md:text-[25px] text-[20px] mb-[1%]">
+                Doação
+              </h1>
+              <input
+                type="text"
+                placeholder="Email para visualização"
+                className="w-[90%] rounded-4xl py-1 px-4 border-black border-2 text-black placeholder-black md:text-[18px]"
+                value={doacao || ""}
+                onChange={(e) => setDoacao(e.target.value)}
+              />
+            </div>
+            <div className="flex flex-col justify-evenly items-center md:w-[35%] w-[80%] gap-[10px] min-w-[250px]">
+              <h1 className="font-bold md:text-[25px] text-[20px] mb-[1%]">
+                Telefone
+              </h1>
+              <input
+                type="text"
+                placeholder="Telefone para visualização"
+                className="w-[90%] rounded-4xl py-1 px-4 border-black border-2 text-black placeholder-black md:text-[18px]"
+                value={tel || ""}
+                onChange={(e) => setDoacao(e.target.value)}
               />
             </div>
           </div>
