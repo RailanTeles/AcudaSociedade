@@ -10,17 +10,19 @@ import MyInformations from "../Components/MyInformations";
 import EditProfile from "../Components/EditProfile";
 import { typePost } from "../page";
 import Post from "../Components/Post";
+import EditPost from "../Components/EditPost";
 
 export default function Profile() {
   // Configurações
-  const { isLogged } = useAuth();
+  const { isLogged, typeUser } = useAuth();
   const router = useRouter();
 
   // Dados - Vem do BackEnd - Pode user o Data
   var image: string | null = null;
   var userExi: string = "nome_perfil";
   var username: string = "nome_arroba";
-  var desc: string | null = "Denúncia sobre descarte irregular de lixo: A denúncia de descarte irregular de lixo é uma atitude essencial para a preservação do meio ambiente e da saúde pública. Quando resíduos são jogados em locais inadequados, como terrenos baldios, ruas ou rios, contribuem para a poluição, proliferação de doenças e entupimento de bueiros. É dever de todos zelar pela limpeza urbana e cobrar ações das autoridades competentes. Cidadãos podem registrar denúncias junto à prefeitura ou órgãos ambientais, preferencialmente com fotos, localização e descrição do ocorrido. A fiscalização correta pode resultar em multas e responsabilização dos infratores. Além disso, campanhas educativas são importantes para conscientizar a população sobre o descarte correto. A coleta seletiva e o uso de ecopontos são alternativas sustentáveis para o destino do lixo. O lixo urbano mal gerenciado afeta diretamente a qualidade de vida nas comunidades. Denunciar é um ato de cidadania e respeito com o próximo. Somente com a colaboração de todos é possível construir cidades mais limpas e saudáveis.";
+  var desc: string | null =
+    "Denúncia sobre descarte irregular de lixo: A denúncia de descarte irregular de lixo é uma atitude essencial para a preservação do meio ambiente e da saúde pública. Quando resíduos são jogados em locais inadequados, como terrenos baldios, ruas ou rios, contribuem para a poluição, proliferação de doenças e entupimento de bueiros. É dever de todos zelar pela limpeza urbana e cobrar ações das autoridades competentes. Cidadãos podem registrar denúncias junto à prefeitura ou órgãos ambientais, preferencialmente com fotos, localização e descrição do ocorrido. A fiscalização correta pode resultar em multas e responsabilização dos infratores. Além disso, campanhas educativas são importantes para conscientizar a população sobre o descarte correto. A coleta seletiva e o uso de ecopontos são alternativas sustentáveis para o destino do lixo. O lixo urbano mal gerenciado afeta diretamente a qualidade de vida nas comunidades. Denunciar é um ato de cidadania e respeito com o próximo. Somente com a colaboração de todos é possível construir cidades mais limpas e saudáveis.";
   var emailExibi: string | null = "teste@gmail.com";
   var insta: string | null = "https://www.instagram.com/railanteles12";
   var tel: string | null = "759839234";
@@ -29,7 +31,9 @@ export default function Profile() {
 
   // Modais
   const [modal, setModal] = useState(false);
-  const [modalEdit, setModalEdit] = useState(false);
+  const [modalEditProfile, setModalEditProfile] = useState(false);
+  const [modalEditPost, setModalEditPost] = useState(false);
+  const [editedPost, setEditedPost] = useState<number | null>(null);
   const posts: typePost[] = [
     {
       idPost: 1,
@@ -53,7 +57,7 @@ export default function Profile() {
       username: "carloslima",
       hour: new Date("2025-02-14T18:45:00"),
       desc: "Finalizamos a reforma da praça! 🏞️",
-      imagem: "https://example.com/praca.jpg",
+      imagem: null,
       loc: "Praça Nova",
       typePos: "ProjetoSocial",
       status: "Completo",
@@ -70,10 +74,20 @@ export default function Profile() {
   };
 
   const AbrirModalEdit = () => {
-    if (modalEdit == false) {
-      setModalEdit(true);
+    if (modalEditProfile == false) {
+      setModalEditProfile(true);
     } else {
-      setModalEdit(false);
+      setModalEditProfile(false);
+    }
+  };
+
+  const AbrirEditPost = (value: null | number) => {
+    if (modalEditPost == false) {
+      setModalEditPost(true);
+      setEditedPost(value);
+    } else {
+      setModalEditPost(false);
+      setEditedPost(null);
     }
   };
 
@@ -142,7 +156,7 @@ export default function Profile() {
         <hr className="w-full border-[#274CB4] border-1 mb-[2%]" />
         <div className="w-full flex items-center flex-col">
           {posts.slice(0, 4).map((post) => (
-            <Post key={post.idPost} post={post}></Post>
+            <Post key={post.idPost} post={post} editPost={AbrirEditPost}></Post>
           ))}
         </div>
       </div>
@@ -159,13 +173,26 @@ export default function Profile() {
       )}
 
       {/* Modal Edit*/}
-      {modalEdit && (
+      {modalEditProfile && (
         <div className="absolute z-80 w-full h-full flex items-center justify-center">
           <div
             className="fixed w-full h-full bg-[rgba(0,0,0,0.7)] bg-opacity-30 cursor-pointer"
             onClick={AbrirModalEdit}
           ></div>
           <EditProfile abrirModal={AbrirModalEdit}></EditProfile>
+        </div>
+      )}
+      {modalEditPost && (
+        <div className="fixed z-80 w-full h-full flex items-center justify-center">
+          <div
+            className="fixed w-full h-full bg-[rgba(0,0,0,0.7)] bg-opacity-30 cursor-pointer"
+            onClick={() => AbrirEditPost(null)}
+          ></div>
+          <EditPost
+            abrirModal={AbrirEditPost}
+            posts={posts}
+            editedPost={editedPost}
+          ></EditPost>
         </div>
       )}
     </div>

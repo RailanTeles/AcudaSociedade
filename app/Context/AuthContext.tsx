@@ -6,18 +6,21 @@ import { jwtDecode } from "jwt-decode";
 
 interface AuthTypes {
     idUser: number | null;
-    login: (id: number, token: string) => void;
+    typeUser: boolean;
+    login: (id: number, type: boolean,token: string) => void;
     logout: () => void;
     isLogged: boolean | null;
 }
 
 interface TokenPayload {
     user_id: number;
+    user_type: boolean;
     exp: number; 
 }
 
 const AuthContext = createContext<AuthTypes>({
     idUser: null,
+    typeUser: false,
     login: () => {},
     logout: () => {},
     isLogged: null
@@ -25,6 +28,7 @@ const AuthContext = createContext<AuthTypes>({
 
 export default function AuthProvider({ children }: { children: ReactNode }) {
     const [idUser, setIdUser] = useState<number | null>(null);
+    const [typeUser, setTypeUser] = useState<boolean>(false);
     const [isLogged, setIsLogged] = useState<boolean | null>(null);
 
     useEffect(() => {
@@ -38,7 +42,7 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
                 }
                 // setIdUser(decoded.user_id);
                 // setIsLogged(true);
-                login(decoded.user_id, tokenSaved);
+                login(decoded.user_id, decoded.user_type, tokenSaved);
             } catch {
                 localStorage.removeItem("token");
                 setIsLogged(false);
@@ -48,20 +52,22 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
         }
     }, []);
 
-    const login = (id: number, token: string) => {
+    const login = (id: number, type: boolean, token: string) => {
         setIdUser(id);
+        setTypeUser(type);
         setIsLogged(true);
         localStorage.setItem("token", token);
     };
 
     const logout = () => {
         setIdUser(null);
+        setTypeUser(false);
         localStorage.removeItem("token");
         setIsLogged(false);
     };
 
     return (
-        <AuthContext.Provider value={{ idUser, login, logout, isLogged }}>
+        <AuthContext.Provider value={{ idUser, typeUser, login, logout, isLogged }}>
             {children}
         </AuthContext.Provider>
     );

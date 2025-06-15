@@ -21,11 +21,14 @@ import Loading from "./Components/Loading";
 import NavBar from "./Components/NavBar";
 import AddPost from "./Components/AddPost";
 import Post from "./Components/Post";
+import EditPost from "./Components/EditPost";
 
 export default function Home() {
   const { isLogged } = useAuth();
   const router = useRouter();
   const [modal, setModal] = useState(false);
+  const [modalEdit, setModalEdit] = useState(false);
+  const [editedPost, setEditedPost] = useState<number | null>(null);
   const posts: typePost[] = [
     {
       idPost: 1,
@@ -35,7 +38,8 @@ export default function Home() {
       username: "mariasilva",
       hour: new Date("2025-06-14T10:30:00"),
       desc: "Apreciando a natureza no parque 🌿",
-      imagem: "https://vladimiraraujo.com/wp-content/uploads/2024/12/A-milagrosa-criacao-de-Deus-Blog-Vladimiraraujo.png",
+      imagem:
+        "https://vladimiraraujo.com/wp-content/uploads/2024/12/A-milagrosa-criacao-de-Deus-Blog-Vladimiraraujo.png",
       loc: "Parque Central",
       typePos: "Normal",
       status: null,
@@ -62,7 +66,8 @@ export default function Home() {
       username: "anabea",
       hour: new Date("2025-03-13T09:15:00"),
       desc: "Denúncia sobre descarte irregular de lixo: A denúncia de descarte irregular de lixo é uma atitude essencial para a preservação do meio ambiente e da saúde pública. Quando resíduos são jogados em locais inadequados, como terrenos baldios, ruas ou rios, contribuem para a poluição, proliferação de doenças e entupimento de bueiros. É dever de todos zelar pela limpeza urbana e cobrar ações das autoridades competentes. Cidadãos podem registrar denúncias junto à prefeitura ou órgãos ambientais, preferencialmente com fotos, localização e descrição do ocorrido. A fiscalização correta pode resultar em multas e responsabilização dos infratores. Além disso, campanhas educativas são importantes para conscientizar a população sobre o descarte correto. A coleta seletiva e o uso de ecopontos são alternativas sustentáveis para o destino do lixo. O lixo urbano mal gerenciado afeta diretamente a qualidade de vida nas comunidades. Denunciar é um ato de cidadania e respeito com o próximo. Somente com a colaboração de todos é possível construir cidades mais limpas e saudáveis.",
-      imagem: "https://blog.exati.com.br/wp-content/uploads/2023/02/limpeza-publica-e-coleta-de-lixo-1.jpg",
+      imagem:
+        "https://blog.exati.com.br/wp-content/uploads/2023/02/limpeza-publica-e-coleta-de-lixo-1.jpg",
       loc: "Rua 7 de Setembro",
       typePos: "Denuncia",
       status: "NaoIniciado",
@@ -91,6 +96,16 @@ export default function Home() {
     }
   };
 
+  const AbrirEditPost = (value: null | number) => {
+    if (modalEdit == false) {
+      setModalEdit(true);
+      setEditedPost(value);
+    } else {
+      setModalEdit(false);
+      setEditedPost(null);
+    }
+  };
+
   // useEffect(() => {
   //   if (isLogged === false) {
   //     router.push("/Login");
@@ -113,7 +128,7 @@ export default function Home() {
       {/* Página */}
       <div className="lg:w-[80%] md:w-[75%] w-full flex items-center flex-col lg:ml-[22%] md:ml-[27%] md:mt-[0%] mt-[48%]">
         {posts.slice(0, 4).map((post) => (
-          <Post key={post.idPost} post={post}></Post>
+          <Post key={post.idPost} post={post} editPost={AbrirEditPost}></Post>
         ))}
       </div>
 
@@ -125,6 +140,16 @@ export default function Home() {
             onClick={AbrirModalPost}
           ></div>
           <AddPost abrirModal={AbrirModalPost}></AddPost>
+        </div>
+      )}
+      {/* Editar Post */}
+      {modalEdit && (
+        <div className="fixed z-80 w-full h-full flex items-center justify-center">
+          <div
+            className="fixed w-full h-full bg-[rgba(0,0,0,0.7)] bg-opacity-30 cursor-pointer"
+            onClick={() => AbrirEditPost(null)}
+          ></div>
+          <EditPost abrirModal={AbrirEditPost} posts={posts} editedPost={editedPost}></EditPost>
         </div>
       )}
     </div>
