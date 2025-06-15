@@ -61,7 +61,7 @@ export default function Profile() {
   // }
 
   return (
-    <div className="w-full h-screen flex md:flex-row flex-col">
+    <div className="w-full h-auto flex md:flex-row flex-col">
       {/* NavBar */}
       <NavBar abrirModal={AbrirModalPost}></NavBar>
 

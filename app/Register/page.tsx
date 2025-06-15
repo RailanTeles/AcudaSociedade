@@ -45,7 +45,7 @@ export default function Register() {
   };
 
   return (
-    <div className="bg-[#274CB4] w-full h-screen flex items-center justify-center">
+    <div className="bg-[#274CB4] w-full h-auto flex items-center justify-center">
       <div className="bg-white flex flex-col items-center justify-evenly xl:h-[92%] xl:w-[75%] lg:h-[90%] lg:w-[80%] md:h-[85%] md:w-[90%] sm:w-[80%] w-[95%] h-[95%] rounded-4xl shadow-xl/20 inset-shadow-2xs relative overflow-hidden">
         <div className="flex items-center justify-center h-[10%] w-full gap-[5%]">
           <img src="Images/AS-logo.png" alt="" className="h-full" />
