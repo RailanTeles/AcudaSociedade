@@ -54,19 +54,19 @@ export default function OtherProfile() {
     setFound(isFound);
   }, [params.username]);
 
-  //   useEffect(() => {
-  //     if (isLogged === false) {
-  //       router.push("/Login");
-  //     }
-  //   }, [isLogged, router]);
+    useEffect(() => {
+      if (isLogged === false) {
+        router.push("/Login");
+      }
+    }, [isLogged, router]);
 
-  //   if (isLogged == null) {
-  //     return <Loading/>;
-  //   }
+    if (isLogged == null) {
+      return <Loading/>;
+    }
 
-  //   if (isLogged === false) {
-  //     return null;
-  //   }
+    if (isLogged === false) {
+      return null;
+    }
 
   return (
     <div className="w-full h-auto flex md:flex-row flex-col">

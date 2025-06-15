@@ -107,19 +107,19 @@ export default function Profile() {
     }
   };
 
-  // useEffect(() => {
-  //   if (isLogged === false) {
-  //     router.push("/Login");
-  //   }
-  // }, [isLogged, router]);
+  useEffect(() => {
+    if (isLogged === false) {
+      router.push("/Login");
+    }
+  }, [isLogged, router]);
 
-  // if (isLogged == null) {
-  //   return <Loading/>;
-  // }
+  if (isLogged == null) {
+    return <Loading/>;
+  }
 
-  // if (isLogged === false) {
-  //   return null;
-  // }
+  if (isLogged === false) {
+    return null;
+  }
 
   return (
     <div className="w-full h-auto flex md:flex-row flex-col">
@@ -130,7 +130,7 @@ export default function Profile() {
       <div className="lg:w-[80%] md:w-[75%] w-full flex items-center flex-col lg:ml-[22%] md:ml-[27%] md:mt-[0%] mt-[48%]">
         <div className="w-[90%] md:h-[20%] h-[10%] min-h-[70px] my-[1%] flex items-center relative md:max-h-[150px] max-h-[90px]">
           <img
-            src={image || "Images/person-placeholder.png"}
+            src={image || "/Images/person-placeholder.png"}
             alt=""
             className="rounded-full border-2 h-[85%] md:mr-[6%] mr-[4%] object-cover"
           />
