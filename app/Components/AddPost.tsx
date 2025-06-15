@@ -10,6 +10,7 @@ export default function AddPost({ abrirModal }: AddProps) {
   const [desc, setDesc] = useState("");
   const [image, setImage] = useState<File | null>(null);
   const [imageUrl, setImageUrl] = useState<string>("");
+  const [loc, setLoc] = useState("");
   const [type, setType] = useState("");
   const [status, setStatus] = useState("");
   const [message, setMessage] = useState("");
@@ -86,6 +87,14 @@ export default function AddPost({ abrirModal }: AddProps) {
             </button>
           </div>
         )}
+
+        <input
+            type="text"
+            placeholder="Digite a localização do ocorrido! Se não quiser, não precisa!"
+            className="md:w-[50%] w-[80%] h-[5%] resize-none rounded-[4px] px-0.5 border-black border-2 placeholder-black"
+            value={loc}
+            onChange={(e) => setLoc(e.target.value)}
+          />
 
         <div className="flex flex-row justify-between items-center md:w-[50%] w-[80%] md:h-[6%] h-[5%]">
           <label htmlFor="type" className="md:text-[18px]">

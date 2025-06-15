@@ -101,7 +101,7 @@ export default function Post({ post }: PostProps) {
       {/* Status */}
       <div className="flex w-full md:items-center items-end justify-evenly my-[1%] mt-[3%] md:flex-row flex-col md:gap-0 gap-[1%]">
         {post.loc && (
-          <div className="flex items-center md:justify-center gap-[10px] my-[1%] md:w-[30%] w-[75%]">
+          <div className="flex items-center md:justify-center gap-[10px] my-[1%] md:w-[30%] w-[75%] overflow-hidden">
             <img src="Images/loc.png" alt="" className="md:w-[15%] w-[10%]" />
             <p>{post.loc}</p>
           </div>
