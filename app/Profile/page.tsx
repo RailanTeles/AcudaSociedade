@@ -8,6 +8,8 @@ import AddPost from "../Components/AddPost";
 import { useAuth } from "../Context/AuthContext";
 import MyInformations from "../Components/MyInformations";
 import EditProfile from "../Components/EditProfile";
+import { typePost } from "../page";
+import Post from "../Components/Post";
 
 export default function Profile() {
   // Configurações
@@ -16,18 +18,47 @@ export default function Profile() {
 
   // Dados - Vem do BackEnd - Pode user o Data
   var image: string | null = null;
-  var userExi: string = "nome_perfil"
-  var username: string = "nome_arroba"
-  var desc: string | null = null;
-  var emailExibi: string | null = null;
+  var userExi: string = "nome_perfil";
+  var username: string = "nome_arroba";
+  var desc: string | null = "Denúncia sobre descarte irregular de lixo: A denúncia de descarte irregular de lixo é uma atitude essencial para a preservação do meio ambiente e da saúde pública. Quando resíduos são jogados em locais inadequados, como terrenos baldios, ruas ou rios, contribuem para a poluição, proliferação de doenças e entupimento de bueiros. É dever de todos zelar pela limpeza urbana e cobrar ações das autoridades competentes. Cidadãos podem registrar denúncias junto à prefeitura ou órgãos ambientais, preferencialmente com fotos, localização e descrição do ocorrido. A fiscalização correta pode resultar em multas e responsabilização dos infratores. Além disso, campanhas educativas são importantes para conscientizar a população sobre o descarte correto. A coleta seletiva e o uso de ecopontos são alternativas sustentáveis para o destino do lixo. O lixo urbano mal gerenciado afeta diretamente a qualidade de vida nas comunidades. Denunciar é um ato de cidadania e respeito com o próximo. Somente com a colaboração de todos é possível construir cidades mais limpas e saudáveis.";
+  var emailExibi: string | null = "teste@gmail.com";
   var insta: string | null = "https://www.instagram.com/railanteles12";
-  var tel: string | null = null;
+  var tel: string | null = "759839234";
   var doacao: string | null = "meupix";
-  var loc: string | null = null;
+  var loc: string | null = "Fraga";
 
   // Modais
   const [modal, setModal] = useState(false);
   const [modalEdit, setModalEdit] = useState(false);
+  const posts: typePost[] = [
+    {
+      idPost: 1,
+      idUser: 1,
+      userImagem: null,
+      userExi: "Maria Silva",
+      username: "mariasilva",
+      hour: new Date("2025-06-14T10:30:00"),
+      desc: "Apreciando a natureza no parque 🌿",
+      imagem:
+        "https://vladimiraraujo.com/wp-content/uploads/2024/12/A-milagrosa-criacao-de-Deus-Blog-Vladimiraraujo.png",
+      loc: "Parque Central",
+      typePos: "Normal",
+      status: null,
+    },
+    {
+      idPost: 4,
+      idUser: 1,
+      userImagem: null,
+      userExi: "Carlos Lima",
+      username: "carloslima",
+      hour: new Date("2025-02-14T18:45:00"),
+      desc: "Finalizamos a reforma da praça! 🏞️",
+      imagem: "https://example.com/praca.jpg",
+      loc: "Praça Nova",
+      typePos: "ProjetoSocial",
+      status: "Completo",
+    },
+  ];
 
   // Métodos
   const AbrirModalPost = () => {
@@ -67,7 +98,7 @@ export default function Profile() {
 
       {/* Página Do Perfil */}
       <div className="lg:w-[80%] md:w-[75%] w-full flex items-center flex-col lg:ml-[22%] md:ml-[27%] md:mt-[0%] mt-[48%]">
-        <div className="w-[90%] md:h-[20%] h-[10%] min-h-[70px] my-[1%] flex items-center relative">
+        <div className="w-[90%] md:h-[20%] h-[10%] min-h-[70px] my-[1%] flex items-center relative md:max-h-[150px] max-h-[90px]">
           <img
             src={image || "Images/person-placeholder.png"}
             alt=""
@@ -87,7 +118,7 @@ export default function Profile() {
             Editar
           </button>
         </div>
-        <div className="w-[90%] my-[2%] flex relative">
+        <div className="max-w-[90%] my-[2%] flex overflow-y-auto">
           <p className="md:text-[14px] text-[12px] text-justify">{desc}</p>
         </div>
 
@@ -109,6 +140,11 @@ export default function Profile() {
           Minhas Postagens
         </h1>
         <hr className="w-full border-[#274CB4] border-1 mb-[2%]" />
+        <div className="w-full flex items-center flex-col">
+          {posts.slice(0, 4).map((post) => (
+            <Post key={post.idPost} post={post}></Post>
+          ))}
+        </div>
       </div>
 
       {/* Modal Post*/}
@@ -129,9 +165,7 @@ export default function Profile() {
             className="fixed w-full h-full bg-[rgba(0,0,0,0.7)] bg-opacity-30 cursor-pointer"
             onClick={AbrirModalEdit}
           ></div>
-          <EditProfile
-            abrirModal={AbrirModalEdit}
-          ></EditProfile>
+          <EditProfile abrirModal={AbrirModalEdit}></EditProfile>
         </div>
       )}
     </div>

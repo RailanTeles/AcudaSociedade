@@ -115,7 +115,7 @@ export default function EditProfile({ abrirModal }: EditProps) {
                 Redes Sociais
               </h1>
               <input
-                type="text"
+                type="email"
                 placeholder="Email para visualização"
                 className="w-[90%] rounded-4xl py-1 px-4 border-black border-2 text-black placeholder-black md:text-[18px]"
                 value={emailExibi || ""}

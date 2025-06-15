@@ -63,7 +63,6 @@ export default function Post({ post }: PostProps) {
         return "Completo";
 
       default:
-        console.warn(`Termo '${filtro}' não mapeado em formatarTipos.`);
         return filtro;
     }
   }
