@@ -12,6 +12,22 @@ import { typePost } from "../page";
 import Post from "../Components/Post";
 import EditPost from "../Components/EditPost";
 
+export type TypeUser = {
+  idUser: number;
+  isOng: boolean;
+  userImagem: string | null;
+  userExi: string;
+  username: string;
+  userEmail: string;
+  userDesc: string | null;
+  exiEmail: string | null;
+  exiInsta: string | null;
+  exiTel: string | null;
+  exiDoacao: string | null;
+  exiLoc: string | null;
+  exiPosts: typePost[];
+}
+
 export default function Profile() {
   // Configurações
   const { isLogged, typeUser } = useAuth();

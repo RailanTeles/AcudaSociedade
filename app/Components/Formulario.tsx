@@ -34,7 +34,7 @@ export default function Formulario({ onMudar }: FormularioProps) {
         // Supondo que data tenha 'access' e 'user_id' (ajuste conforme seu backend)
         // Caso seu backend retorne o token como 'access' e o id do usuário separado
 
-        login(data.user_id, data.access); // Salva no contexto e no localStorage
+        login(data.user_id, data.user_type,data.access); // Salva no contexto e no localStorage
 
         setMensagemSucesso(true);
         setMensagem("Login realizado com sucesso!");

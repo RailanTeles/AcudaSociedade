@@ -75,20 +75,20 @@ export default function Post({ post, editPost }: PostProps) {
       {/* Imagem */}
       <div className="flex items-center justify-center absolute top-0 left-0 md:w-[12%] w-[20%] aspect-square m-[1%] object-cover">
         <img
-          src={post.userImagem || "Images/person-placeholder.png"}
+          src={post.userImagem || "/Images/person-placeholder.png"}
           alt=""
           className="w-[90%] aspect-square rounded-full object-cover"
         />
       </div>
       {/* Editar */}
-      {/* {idUser === post.idUser && ( */}
+      {idUser === post.idUser && (
         <div
           className="flex absolute md:top-0 md:bottom-auto md:left-auto top-auto bottom-0 left-0 md:w-[30px] w-[25px] aspect-square md:my-[2%] md:mx-[1%] my-[5%] mx-[4%] object-cover cursor-pointer bg-white p-1 rounded-full"
           onClick={() => editPost(post.idPost)}
         >
-          <img src="Images/edit.png" alt="" className="w-full" />
+          <img src="/Images/edit.png" alt="" className="w-full" />
         </div>
-      {/* )} */}
+      )}
       {/* Informações */}
       <div className="md:w-[85%] w-[75%] flex my-[1%] gap-[12px] items-center">
         <p className="font-bold">{post.userExi}</p>
@@ -113,7 +113,7 @@ export default function Post({ post, editPost }: PostProps) {
       <div className="flex w-full md:items-center items-end justify-evenly my-[1%] mt-[3%] md:flex-row flex-col md:gap-0 gap-[1%]">
         {post.loc && (
           <div className="flex items-center md:justify-center gap-[10px] my-[1%] md:w-[30%] w-[75%] overflow-hidden">
-            <img src="Images/loc.png" alt="" className="md:w-[15%] w-[10%]" />
+            <img src="/Images/loc.png" alt="" className="md:w-[15%] w-[10%]" />
             <p>{post.loc}</p>
           </div>
         )}

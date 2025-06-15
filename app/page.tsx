@@ -142,6 +142,7 @@ export default function Home() {
           <AddPost abrirModal={AbrirModalPost}></AddPost>
         </div>
       )}
+      
       {/* Editar Post */}
       {modalEdit && (
         <div className="fixed z-80 w-full h-full flex items-center justify-center">

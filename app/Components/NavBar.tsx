@@ -9,7 +9,7 @@ export default function NavBar( {abrirModal} : NavProps) {
     <div className="fixed flex md:flex-col bg-[#274CB4] items-center md:justify-start justify-evenly lg:w-[22%] md:w-[27%] w-full md:h-full h-auto rounded-br-[25px] md:rounded-tr-[25px] md:rounded-bl-[0px] rounded-bl-[25px] md:py-[2%] md:pb-[0%] py-[6%] pb-[10%] md:gap-[10%] box-border z-10">
       <div className="w-full md:flex hidden justify-evenly items-center">
         <img
-          src="Images/AS-logo.png"
+          src="/Images/AS-logo.png"
           alt=""
           className="bg-white rounded-full w-[25%] md:flex hidden"
         />
@@ -23,7 +23,7 @@ export default function NavBar( {abrirModal} : NavProps) {
         href="/"
         className="flex items-center gap-[10%] md:w-[70%] transform transition duration-300 hover:scale-110"
       >
-        <img src="Images/home.png" alt="" className="md:w-[25%] w-[100%]" />
+        <img src="/Images/home.png" alt="" className="md:w-[25%] w-[100%]" />
         <h1 className="hidden md:flex text-[#F9C118] font-bold lg:text-[22px] md:text-[16px]">
           Início
         </h1>
@@ -32,7 +32,7 @@ export default function NavBar( {abrirModal} : NavProps) {
         href="/Search"
         className="flex items-center gap-[10%] md:w-[70%] transform transition duration-300 hover:scale-110"
       >
-        <img src="Images/search.png" alt="" className="md:w-[25%] w-[100%]" />
+        <img src="/Images/search.png" alt="" className="md:w-[25%] w-[100%]" />
         <h1 className="hidden md:flex text-[#F9C118] font-bold lg:text-[22px] md:text-[16px]">
           Pesquisar
         </h1>
@@ -41,7 +41,7 @@ export default function NavBar( {abrirModal} : NavProps) {
         href="/Profile"
         className="flex items-center gap-[10%] md:w-[70%] transform transition duration-300 hover:scale-110"
       >
-        <img src="Images/perfil.png" alt="" className="md:w-[25%] w-[100%]" />
+        <img src="/Images/perfil.png" alt="" className="md:w-[25%] w-[100%]" />
         <h1 className="hidden md:flex text-[#F9C118] font-bold lg:text-[22px] md:text-[16px]">
           Meu Perfil
         </h1>
