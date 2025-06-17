@@ -11,7 +11,7 @@ export default function Formulario({ onMudar }: FormularioProps) {
   const router = useRouter();
   const { login } = useAuth();
 
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [mensagem, setMensagem] = useState("");
   const [mensagemSucesso, setMensagemSucesso] = useState<boolean | null>(null);
@@ -25,7 +25,7 @@ export default function Formulario({ onMudar }: FormularioProps) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ email, password }),
       });
 
       const data = await response.json();
@@ -71,14 +71,14 @@ export default function Formulario({ onMudar }: FormularioProps) {
         >
           <input
             required
-            type="text"
-            placeholder="Digite seu nome de usuário"
+            type="e-mail"
+            placeholder="Digite seu email"
             className="w-[80%] md:h-[14%] h-[18%] rounded-4xl px-4 border-black border-2 text-black placeholder-black md:text-[18px]"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             onInvalid={(e) =>
               e.currentTarget.setCustomValidity(
-                "Por favor, preencha com seu nome de usuário"
+                "Por favor, preencha com seu email"
               )
             }
             onInput={(e) => e.currentTarget.setCustomValidity("")}
